@@ -1,0 +1,20 @@
+{
+  "name": "medidas-puertas",
+  "version": "1.0.0",
+  "description": "Calculo medidas puertas",
+  "main": "main.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w" 
+  },
+  "author": "Rafael Teresa",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "rollup": "^2.58.0"
+  },
+  "devdependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "rollup": "^2.58.0"
+  }
+}
