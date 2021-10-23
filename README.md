@@ -1,2 +1,2 @@
 # Calculo_Puertas
-Calculo medidas puertas
+Calculo medidas puertas en base a dimensiones de hueco
