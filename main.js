@@ -3,7 +3,9 @@ function modelopuerta(){
     1-frame
     2-slim
     3-semitransparent
-    4-transparent`));
+    4-transparent
+    5-frame break out
+    6-slim break out`));
     return modelo;
 }
 function configuracionpuerta(){
@@ -19,6 +21,77 @@ let a = "";
 let modeloo = Number(modelopuerta());
 let configuracionn = Number(configuracionpuerta());
 
+switch (true) {
+    case modeloo == 1 && configuracionn == 1:
+        a=1;
+        break;
+    case modeloo == 1 && configuracionn == 2:
+        a=2;
+        break;
+    case modeloo == 1 && configuracionn == 3:
+        a=3;
+        break;
+    case modeloo == 1 && configuracionn == 4:
+        a=4;
+        break;
+    case modeloo == 2 && configuracionn == 1:
+        a=5;
+        break;
+    case modeloo == 2 && configuracionn == 2:
+        a=6;
+        break;
+    case modeloo == 2 && configuracionn == 3:
+        a=7;
+        break;
+    case modeloo == 2 && configuracionn == 4:
+        a=8;
+        break;
+    case modeloo == 3 && configuracionn == 1:
+        a=9;
+        break;
+    case modeloo == 3 && configuracionn == 2:
+        a=10;
+        break;
+    case modeloo == 3 && configuracionn == 3:
+        a=11;
+        break;
+    case modeloo == 3 && configuracionn == 4:
+        a=12;
+        break;
+    case modeloo == 4 && configuracionn == 1:
+        a=13;
+        break;
+    case modeloo == 4 && configuracionn == 2:
+        a=14;
+        break;
+    case modeloo == 4 && configuracionn == 3:
+        a=15;
+        break;
+    case modeloo == 4 && configuracionn == 4:
+        a=16;
+        break;
+    case modeloo == 5 && configuracionn == 2:
+        a=17;
+        break;
+    case modeloo == 5 && configuracionn == 4:
+        a=18;
+        break;
+    case modeloo == 6 && configuracionn == 2:
+        a=19;
+        break;
+    case modeloo == 6 && configuracionn == 4:
+        a=20;
+        break;
+    default:
+        a=0;
+        break;
+}
+
+
+
+
+
+/*
 switch (modeloo) {
     case 1:
         switch (configuracionn){
@@ -100,7 +173,7 @@ switch (modeloo) {
         a = 0;
         break;
 } 
-
+*/
 /*
 let a= Number(prompt(`Tipos de puerta:
 frame                       (1)-1h     (2)-1f+1h     (3)-2h    (4)-2f+2h
@@ -118,6 +191,20 @@ let HolguraAnchoPuerta = 0;
 let HolguraAltoPuerta = 0;
 let X = 0
 
+switch (true) {
+    case a == 1 || a == 3 || a == 5 || a == 7 || a == 9 || a == 11 || a == 13 || a == 15 :
+        X = 0;
+        break;
+    case  a == 2 || a == 4 || a == 6 || a == 8 || a == 10 || a == 12 || a == 14 || a == 16 || a == 17 || a == 18 || a == 19 || a == 20 :
+        X = prompt("Cual es el valor de X?");
+        break;
+    default:
+        X = 0;
+        break;
+}
+
+
+/*
 switch (a) {
     case 1:
     case 3:
@@ -143,7 +230,7 @@ switch (a) {
         X = 0;
         break;
 }   
-
+*/
 function EsAutoportante() {
     const FW_autoportante = AnchoHuecoObra - HolguraAnchoAutoportante;
     const FH_autoportante = AltoHuecoObra - HolguraAltoAutoportante;
@@ -308,6 +395,45 @@ function transparent2f2h (ancho,alto){
     return [FW, FH,COW,COH,CL,"Transparent 2 fijos + 2 hojas moviles"];
 }
 
+//tipo17
+function framebreakout1f1h (ancho,alto){
+    let FW = ancho
+    let FH = alto
+    let COW = (FW -127-X)/2;
+    let COH = FH-55;
+    let CL = FW+113;
+    return [FW, FH,COW,COH,CL,"Frame Break Out 1 fijo + 1 hoja movil"];
+}
+
+//tipo18
+function framebreakout2f2h (ancho,alto){
+    let FW = ancho
+    let FH = alto
+    let COW = (FW -160-(2*X))/2;
+    let COH = FH-55;
+    let CL = FW;
+    return [FW, FH,COW,COH,CL,"Frame Break Out 2 fijos + 2 hojas moviles"];
+}
+
+//tipo19
+function slimbreakout1f1h (ancho,alto){
+    let FW = ancho
+    let FH = alto
+    let COW = (FW -67-X)/2;
+    let COH = FH-44;
+    let CL = FW+102;
+    return [FW, FH,COW,COH,CL,"Slim Break Out 1 fijo + 1 hoja movil"];
+}
+
+//tipo20
+function slimbreakout2f2h (ancho,alto){
+    let FW = ancho
+    let FH = alto
+    let COW = (FW -104-(2*X))/2;
+    let COH = FH-44;
+    let CL = FW;
+    return [FW, FH,COW,COH,CL,"Slim Break Out 2 fijos + 2 hojas moviles"];
+}
 
 // Selección del tipo de puerta
 // Aplica la función en función del tipo de puerta
@@ -345,6 +471,14 @@ function bypass(rr,yy,tipoo){
             return transparent2h(rr,yy)
         case 16:   
             return transparent2f2h(rr,yy)
+        case 17:   
+            return framebreakout1f1h(rr,yy)
+        case 18:   
+            return framebreakout2f2h(rr,yy)
+        case 19:   
+            return slimbreakout1f1h(rr,yy)
+        case 20:   
+            return slimbreakout2f2h(rr,yy)
         default:
             document.body.innerHTML ="revise los datos datos"
     }   
